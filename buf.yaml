@@ -1,7 +1,15 @@
 version: v1
+
+name: buf.build/grpc-rest-server/proto
+
+deps:
+  - buf.build/grpc-ecosystem/grpc-gateway
+
 breaking:
   use:
     - FILE
 lint:
   use:
     - DEFAULT
+  ignore:
+    - google
