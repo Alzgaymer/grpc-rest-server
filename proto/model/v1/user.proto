@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package proto.model.v1;
+
+option go_package = "github.com/Alzgaymer/grpc-rest-server/gen/go/proto/model/v1;proto_user_model";
+
+message User {
+    optional string name = 1;
+    optional string email = 2;
+    optional string id = 3;
+}
