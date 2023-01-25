@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package proto.service.v1;
+
+
+import "proto/model/v1/user.proto";
+
+import "google/api/annotations.proto";
+
+option go_package = "github.com/Alzgaymer/grpc-rest-server/gen/go/proto/service/v1;proto_user_service";
+
+service UserService {
+    rpc GetUsers (GetUsersRequest) returns (GetUsersResponse){
+        option (google.api.http) = {
+            get: "v1/get-users"
+        };
+    };
+}
+
+message GetUsersRequest {
+    proto.model.v1.User user = 1;
+}
+message GetUsersResponse {
+
+}
