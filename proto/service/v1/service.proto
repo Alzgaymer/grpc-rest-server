@@ -15,11 +15,34 @@ service UserService {
             get: "v1/get-users"
         };
     };
+
+    rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse)
+    {
+        option (google.api.http) = {
+            patch: "v1/update-user/{id}"
+            body: "*"
+        };
+    };
 }
 
 message GetUsersRequest {
-    proto.model.v1.User user = 1;
+    optional string name = 1;
+    optional string email = 2;
+    optional string id = 3;
+    optional string age = 4;  
 }
 message GetUsersResponse {
-
+    repeated proto.model.v1.User users = 1;
 }
+
+message UpdateUserRequest {
+    string id = 1;              //mapped to URL
+    optional string name = 2;   //mapped to body
+    optional string email = 3;  //mapped to body
+    optional string age = 4;    //mapped to body
+}
+// This is response for update users.
+message UpdateUserResponse {
+    proto.model.v1.User user = 1;
+}
+           
