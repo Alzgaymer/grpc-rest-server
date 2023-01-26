@@ -12,27 +12,27 @@ option go_package = "github.com/Alzgaymer/grpc-rest-server/gen/go/proto/service/
 service UserService {
     rpc GetUsers (GetUsersRequest) returns (GetUsersResponse){
         option (google.api.http) = {
-            get: "v1/get-users"
+            get: "/v1/get-users"
         };
     };
 
     rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse)
     {
         option (google.api.http) = {
-            patch: "v1/update-user/{id}"
+            patch: "/v1/update-user/{id}"
             body: "*"
         };
     };
 }
 
 message GetUsersRequest {
-    optional string name = 1;
-    optional string email = 2;
-    optional string id = 3;
-    optional string age = 4;  
+    optional string name = 1;      //mapped to querry URL parameter ?name = ""
+    optional string email = 2;     //mapped to querry URL parameter ?email = ""
+    optional string id = 3;    //mapped to querry URL parameter ?id = ""
+    optional string age = 4;       //mapped to querry URL parameter ? age = "" 
 }
 message GetUsersResponse {
-    repeated proto.model.v1.User users = 1;
+    repeated model.v1.User users = 1;
 }
 
 message UpdateUserRequest {
@@ -43,6 +43,6 @@ message UpdateUserRequest {
 }
 // This is response for update users.
 message UpdateUserResponse {
-    proto.model.v1.User user = 1;
+    model.v1.User user = 1;
 }
            
