@@ -5,9 +5,6 @@
 *.so
 *.dylib
 
-# Ignores grpc generated library
-gen/
-
 # Test binary, built with `go test -c`
 *.test
 
